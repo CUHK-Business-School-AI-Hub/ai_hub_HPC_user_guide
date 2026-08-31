@@ -157,8 +157,8 @@ If you need a temporary allocation above your quota for a particular resource, s
 
 | Location | Quota |
 | :--- | ---: |
-| `/hpchome/<user>` | 100 GB |
-| `/hpclarge/<user>` | 1000 GB （**Note: This folder will be deleted in 15 September 2026, you must move your data to /hpchome before the date.**） |
+| `/hpchome/<user>` | 1000 GB |
+| `/hpclarge/<user>` | 4000 GB （**Note: This folder will be deleted in 15 September 2026, you must move your data to /hpchome before the date.**） |
 
 The personal storage quota is 1000G per user.
 
