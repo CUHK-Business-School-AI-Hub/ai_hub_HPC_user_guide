@@ -1,4 +1,4 @@
-# An Administration Handbook of AI Lab's HPC Cluster
+# An Administration Handbook of AI Hub's HPC Cluster
 
 ## Login to the cluster
 
@@ -131,7 +131,7 @@ After the job ends, you can check the content of files specified by `#SBATCH --o
 
 # Resource quota
 
-Computing resources, especially GPUs, are highly limited. Please request only the resources you need. The associated resource quotas are provided below for reference.
+Computing resources, especially GPUs, are highly limited. Please request only the resources you need. The associated resource quotas are allocated on an individual basis and are provided below for reference.
 
 ### Default Resource Allocation
 
@@ -143,19 +143,24 @@ If a resource is not specified in your Slurm job, the following default allocati
 | GPU | 0 |
 | RAM | 16 GB |
 
-### Maximum Resource Limits per User
+### Resource Limits per User
 
-| User type | CPU (cores) | GPU (H100) | RAM (GB) | Maximum job duration | Priority |
-| :--- | ---: | ---: | ---: | :--- | :--- |
-| Faculty staff | 120 | 8 | 480 | 3 days | High |
-| RPG student | 60 | 4 | 240 | 3 days | Normal |
+| User tier | Logical CPUs | Default / max memory (GB) | Max concurrent GPUs / user | Max GPUs / job | Default / max wall time | Preemption role |
+| :--- | ---: | :--- | ---: | ---: | :--- | :--- |
+| Faculty (Professoriate, Teaching & Research Academic) | 120 | 128 / 480 | 8 | 8 | 24 / 48 hours | Preemptor (bumps lower tiers instantly) |
+| Full-time Research Staff (RA, Post-doc) | 120 | 128 / 480 | 8 | 8 | 24 / 36 hours | Preemptable by Faculty |
+| Research Postgraduate Students (MPhil-PhD) | 60 | 64 / 240 | 4 | 4 | 12 / 24 hours | Preemptable by all |
+
+If you need a temporary allocation above your quota for a particular resource, submit a request to AI Hub. Approval depends on the actual circumstances.
 
 ### Storage Quota
 
 | Location | Quota |
 | :--- | ---: |
 | `/hpchome/<user>` | 100 GB |
-| `/hpclarge/<user>` | 1000 GB |
+| `/hpclarge/<user>` | 1000 GB （**Note: This folder will be deleted in 15 September 2026, you must move your data to /hpchome before the date.**） |
+
+The personal storage quota is 1000G per user.
 
 ## Additional Information
 
@@ -169,7 +174,7 @@ The local scratch space for a job is located at `/mnt/slurm_scratch/job_<JOB_ID>
 
 When your job starts, Slurm assigns it a job ID and creates a temporary folder on the GPU node's flash drives at `/mnt/slurm_scratch/job_<JOB_ID>`. Only you can access this folder, and it has a disk quota of 1000GB. Processing data in this folder is much faster than reading from or writing to your home directory at `/hpchome/<user>`.
 
-The scratch folder is deleted immediately when your job finishes or when you exit the job. Before exiting a running job, make sure to copy all important data back to `/hpchome/<user>` or `/hpclarge/<user>`. It is better to synchronize important data incrementally and regularly while the job is running.
+The scratch folder is deleted immediately when your job finishes or when you exit the job. Before exiting a running job, make sure to copy all important data back to `/hpchome/<user>`. It is better to synchronize important data incrementally and regularly while the job is running.
 
 ### Resource Usage Policy
 
