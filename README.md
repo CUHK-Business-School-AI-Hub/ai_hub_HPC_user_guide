@@ -133,16 +133,6 @@ After the job ends, you can check the content of files specified by `#SBATCH --o
 
 Computing resources, especially GPUs, are highly limited. Please request only the resources you need. The associated resource quotas are allocated on an individual basis and are provided below for reference.
 
-### Default Resource Allocation
-
-If a resource is not specified in your Slurm job, the following default allocation applies:
-
-| Resource | Default allocation |
-| :--- | :--- |
-| CPU | 1 core |
-| GPU | 0 |
-| RAM | 16 GB |
-
 ### Resource Limits per User
 
 | User tier | Logical CPUs | Default / max memory (GB) | Max concurrent GPUs / user | Max GPUs / job | Default / max wall time | Preemption role |
