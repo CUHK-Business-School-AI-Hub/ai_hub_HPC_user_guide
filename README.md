@@ -135,11 +135,11 @@ Computing resources, especially GPUs, are highly limited. Please request only th
 
 ### Resource Limits per User
 
-| User tier | Logical CPUs | Default / max memory (GB) | Max concurrent GPUs / user | Max GPUs / job | Default / max wall time | Preemption role |
+| User tier | Logical CPUs | Default / max memory (GB) | Max concurrent GPUs / user | Max GPUs / job | Default / max wall time | Priority score in slurm |
 | :--- | ---: | :--- | ---: | ---: | :--- | :--- |
-| Faculty (Professoriate, Teaching & Research Academic) | 120 | 128 / 480 | 8 | 8 | 24 / 48 hours | Preemptor (bumps lower tiers instantly) |
-| Full-time Research Staff (RA, Post-doc) | 120 | 128 / 480 | 8 | 8 | 24 / 36 hours | Preemptable by Faculty |
-| Research Postgraduate Students (MPhil-PhD) | 60 | 64 / 240 | 4 | 4 | 12 / 24 hours | Preemptable by all |
+| Faculty (Professoriate, Teaching & Research Academic) | 120 | 128 / 480 | 8 | 8 | 24 / 48 hours | 10000 |
+| Full-time Research Staff (RA, Post-doc) | 120 | 128 / 480 | 8 | 8 | 24 / 36 hours | 5000 |
+| Research Postgraduate Students (MPhil-PhD) | 60 | 64 / 240 | 4 | 4 | 12 / 24 hours | 1000 |
 
 If you need a temporary allocation above your quota for a particular resource, submit a request to AI Hub. Approval depends on the actual circumstances.
 
