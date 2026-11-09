@@ -1,5 +1,29 @@
 # An Administration Handbook of AI Hub's HPC Cluster
 
+## Table of Contents
+
+- [Login to the cluster](#login-to-the-cluster)
+  - [Apply for an account](#apply-for-an-account)
+  - [Direct login using SSH command](#direct-login-using-ssh-command)
+  - [Remote login using VS Code](#remote-login-using-vs-code)
+  - [Upload data](#upload-data)
+- [Prepare your environment](#prepare-your-environment)
+  - [Load modules](#load-modules)
+  - [Prepare Conda environment](#prepare-conda-environment)
+- [Prepare your scripts and data](#prepare-your-scripts-and-data)
+- [Using slurm to submit jobs](#using-slurm-to-submit-jobs)
+  - [Debug your code](#debug-your-code)
+  - [Submit your job](#submit-your-job)
+  - [Some common slurm commands](#some-common-slurm-commands)
+- [Resource quota](#resource-quota)
+  - [Resource Limits per User](#resource-limits-per-user)
+  - [Storage Quota](#storage-quota)
+- [Additional Information](#additional-information)
+  - [Fairshare Policy](#fairshare-policy)
+  - [Local Scratch Space on GPU Nodes](#local-scratch-space-on-gpu-nodes)
+  - [Resource Usage Policy](#resource-usage-policy)
+- [Local LLMs](docs/local_llms.md)
+
 ## Login to the cluster
 
 ### Apply for an account
@@ -129,7 +153,7 @@ After the job ends, you can check the content of files specified by `#SBATCH --o
 | scontrol | View detailed information of jobs or nodes | `scontrol show job <JOBID>`<br>`scontrol show node <NODELIST>` |
 | srun | Interactive job submission (for debugging) | `srun -p Interactive --pty bash` (request interactive terminal) |
 
-# Resource quota
+## Resource quota
 
 Computing resources, especially GPUs, are highly limited. Please request only the resources you need. The associated resource quotas are allocated on an individual basis and are provided below for reference.
 
@@ -168,3 +192,7 @@ The scratch folder is deleted immediately when your job finishes or when you exi
 ### Resource Usage Policy
 
 Please release computing resources as soon as you have finished using them. We conduct regular checks and will forcibly terminate jobs that have requested resources but remain idle for more than 2 hours, as well as jobs that have requested GPUs but are only using CPUs.
+
+## Local LLMs
+
+Two local large models (Qwen3.8-27B and Deepseek-VL2-Small) are available through an OpenAI-compatible API and a WebUI. See [Local LLMs](docs/local_llms.md) for details.
