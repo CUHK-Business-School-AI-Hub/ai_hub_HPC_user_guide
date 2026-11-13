@@ -22,8 +22,8 @@ curl http://137.189.75.113:8000/qwen/v1/chat/completions \
   -d '{
     "model": "qwen3.8-27b",
     "messages": [
-      {"role": "system", "content": "你是一个高效的 AI 助手。"},
-      {"role": "user", "content": "请用一句话介绍你自己。"}
+      {"role": "system", "content": "You are a highly capable AI assistant."},
+      {"role": "user", "content": "Please introduce yourself in one sentence."}
     ],
     "temperature": 0.7,
     "max_tokens": 1024
@@ -45,7 +45,7 @@ curl http://137.189.75.113:8000/deepseek-vl2-small/v1/chat/completions \
       {
         "role": "user",
         "content": [
-          {"type": "text", "text": "这张图片里有什么？"},
+          {"type": "text", "text": "What is in this image?"},
           {
             "type": "image_url",
             "image_url": {
@@ -93,8 +93,8 @@ response = requests.post(
     json={
         "model": "qwen3.8-27b",
         "messages": [
-            {"role": "system", "content": "你是一个高效的 AI 助手。"},
-            {"role": "user", "content": "请用一句话介绍你自己。"},
+            {"role": "system", "content": "You are a highly capable AI assistant."},
+            {"role": "user", "content": "Please introduce yourself in one sentence."},
         ],
         "temperature": 0.7,
         "max_tokens": 1024,
@@ -125,7 +125,7 @@ response = requests.post(
             {
                 "role": "user",
                 "content": [
-                    {"type": "text", "text": "这张图片里有什么？"},
+                    {"type": "text", "text": "What is in this image?"},
                     {
                         "type": "image_url",
                         "image_url": {
