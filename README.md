@@ -195,4 +195,4 @@ Please release computing resources as soon as you have finished using them. We c
 
 ## Local LLMs
 
-Two local large models (Qwen3.8-27B and Deepseek-VL2-Small) are available through an OpenAI-compatible API and a WebUI. You can also use them with Claude Code in VS Code or the terminal. See [Local LLMs](docs/local_llms.md) for details.
+Two local large models (Qwen3.8-27B and Deepseek-VL2-Small) are available through an OpenAI-compatible API, a Python script, and a WebUI. You can also use them with Claude Code in VS Code or the terminal. See [Local LLMs](docs/local_llms.md) for details.

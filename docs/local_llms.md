@@ -75,6 +75,76 @@ with open("image.jpg", "rb") as f:
     encoded = base64.b64encode(f.read()).decode("utf-8")
 ```
 
+## Access via Python
+
+The requests above can be issued directly from a Python script using the [`requests`](https://requests.readthedocs.io/) library (install with `pip install requests` if it is not already available).
+
+### Qwen3.8-27B
+
+```python
+import requests
+
+response = requests.post(
+    "http://137.189.75.113:8000/qwen/v1/chat/completions",
+    headers={
+        "Content-Type": "application/json",
+        "Authorization": "Bearer your-secret-key",
+    },
+    json={
+        "model": "qwen3.8-27b",
+        "messages": [
+            {"role": "system", "content": "你是一个高效的 AI 助手。"},
+            {"role": "user", "content": "请用一句话介绍你自己。"},
+        ],
+        "temperature": 0.7,
+        "max_tokens": 1024,
+    },
+)
+response.raise_for_status()
+print(response.json()["choices"][0]["message"]["content"])
+```
+
+### Deepseek-VL2-Small
+
+The image is read from disk and base64-encoded inside the script, so there is no need to paste the encoded string by hand:
+
+```python
+import base64
+
+import requests
+
+with open("image.jpg", "rb") as f:
+    encoded_image = base64.b64encode(f.read()).decode("utf-8")
+
+response = requests.post(
+    "http://137.189.75.113:8000/deepseek-vl2-small/v1/chat/completions",
+    headers={"Content-Type": "application/json"},
+    json={
+        "model": "deepseek-vl2-small",
+        "messages": [
+            {
+                "role": "user",
+                "content": [
+                    {"type": "text", "text": "这张图片里有什么？"},
+                    {
+                        "type": "image_url",
+                        "image_url": {
+                            "url": f"data:image/jpeg;base64,{encoded_image}"
+                        },
+                    },
+                ],
+            }
+        ],
+        "temperature": 0.7,
+        "max_tokens": 512,
+    },
+)
+response.raise_for_status()
+print(response.json()["choices"][0]["message"]["content"])
+```
+
+Note that the MIME type in the `data:` URL should match the actual image format, e.g. `data:image/png;base64,...` for PNG files.
+
 ## Access via WebUI
 
 A WebUI is also available at `http://137.189.75.113`.
